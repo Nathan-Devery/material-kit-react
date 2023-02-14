@@ -2,16 +2,7 @@ import { Helmet } from 'react-helmet-async';
 import { faker } from '@faker-js/faker';
 // @mui
 import { useTheme } from '@mui/material/styles';
-import {
-  Grid, Container, Typography, Radio,
-  Stack,
-  RadioGroup,
-  FormControlLabel,
-  Button
-} from '@mui/material';
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import { TextareaAutosize } from '@mui/base';
+import { Grid, Container, Typography } from '@mui/material';
 // components
 import Iconify from '../components/iconify';
 // sections
@@ -26,12 +17,6 @@ import {
   AppCurrentSubject,
   AppConversionRates,
 } from '../sections/@dashboard/app';
-
-export const FILTER_PRICE_OPTIONS = [
-  { value: 'below', label: 'Below $25' },
-  { value: 'between', label: 'Between $25 - $75' },
-  { value: 'above', label: 'Above $75' },
-];
 
 // ----------------------------------------------------------------------
 
@@ -50,83 +35,6 @@ export default function DashboardAppPage() {
         </Typography>
 
         <Grid container spacing={3}>
-          <Grid item xs={12} md={12} lg={8} >
-            <TextField
-              id="outlined-multiline-static"
-              label="Multiline"
-              multiline
-              rows={10}
-              width="50vw"
-              defaultValue="Default Value"
-              variant="filled"
-              fullWidth
-            />
-          </Grid>
-
-          <Grid item xs={12} md={12} lg={4} >
-            <Stack spacing={3} sx={{ p: 3 }}>
-              <div>
-                <Typography variant="subtitle1" gutterBottom>
-                  Price
-                </Typography>
-                <RadioGroup>
-                  {FILTER_PRICE_OPTIONS.map((item) => (
-                    <FormControlLabel key={item.value} value={item.value} control={<Radio />} label={item.label} />
-                  ))}
-                </RadioGroup>
-              </div>
-              {/* <div>
-                <Button href="https://material-ui.com/store/items/minimal-dashboard/" target="_blank" variant="contained">
-                  Generate User Stories
-                </Button> 
-              </div> */}
-              <div>
-              <Button
-                variant="contained"
-                component="label"
-              >
-                Upload File
-                <input
-                  type="file"
-                  hidden
-                />
-              </Button>
-              </div>
-            </Stack>
-          </Grid>
-
-          <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title="Weekly Sales" total={714000} icon={'ant-design:android-filled'} />
-          </Grid>
-
-          <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title="New Users" total={1352831} color="info" icon={'ant-design:apple-filled'} />
-          </Grid>
-
-          <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title="Item Orders" total={1723315} color="warning" icon={'ant-design:windows-filled'} />
-          </Grid>
-
-          <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title="Bug Reports" total={234} color="error" icon={'ant-design:bug-filled'} />
-          </Grid>
-
-          <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title="Weekly Sales" total={714000} icon={'ant-design:android-filled'} />
-          </Grid>
-
-          <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title="New Users" total={1352831} color="info" icon={'ant-design:apple-filled'} />
-          </Grid>
-
-          <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title="Item Orders" total={1723315} color="warning" icon={'ant-design:windows-filled'} />
-          </Grid>
-
-          <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title="Bug Reports" total={234} color="error" icon={'ant-design:bug-filled'} />
-          </Grid>
-
           <Grid item xs={12} md={6} lg={8}>
             <AppWebsiteVisits
               title="Website Visits"
@@ -272,6 +180,19 @@ export default function DashboardAppPage() {
                   value: 443232,
                   icon: <Iconify icon={'eva:twitter-fill'} color="#1C9CEA" width={32} />,
                 },
+              ]}
+            />
+          </Grid>
+
+          <Grid item xs={12} md={6} lg={8}>
+            <AppTasks
+              title="Tasks"
+              list={[
+                { id: '1', label: 'Create FireStone Logo' },
+                { id: '2', label: 'Add SCSS and JS files if required' },
+                { id: '3', label: 'Stakeholder Meeting' },
+                { id: '4', label: 'Scoping & Estimations' },
+                { id: '5', label: 'Sprint Showcase' },
               ]}
             />
           </Grid>
