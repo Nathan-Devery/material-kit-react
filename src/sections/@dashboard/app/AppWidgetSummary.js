@@ -1,7 +1,7 @@
 // @mui
 import PropTypes from 'prop-types';
 import { alpha, styled } from '@mui/material/styles';
-import { Card, Typography } from '@mui/material';
+import { Card, Typography, CardActions, CardContent, Button, FormGroup, FormControlLabel, Checkbox  } from '@mui/material';
 // utils
 import { fShortenNumber } from '../../../utils/formatNumber';
 // components
@@ -36,14 +36,14 @@ export default function AppWidgetSummary({ title, total, icon, color = 'primary'
       sx={{
         py: 5,
         boxShadow: 0,
-        textAlign: 'center',
+        // textAlign: 'center',
         color: (theme) => theme.palette[color].darker,
         bgcolor: (theme) => theme.palette[color].lighter,
         ...sx,
       }}
       {...other}
     >
-      <StyledIcon
+      {/* <StyledIcon
         sx={{
           color: (theme) => theme.palette[color].dark,
           backgroundImage: (theme) =>
@@ -60,7 +60,32 @@ export default function AppWidgetSummary({ title, total, icon, color = 'primary'
 
       <Typography variant="subtitle2" sx={{ opacity: 0.72 }}>
         {title}
-      </Typography>
+      </Typography> */}
+      <CardContent>
+        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+        {title} 
+        </Typography>
+        <Typography variant="h5" component="div">
+          As a logged-in user,
+        </Typography>
+        <Typography variant="h5" component="div">
+          I want to be able to report unsuitable content,
+        </Typography>
+        <Typography variant="h5" component="div">
+          So that the website admin can review and/or remove the content
+        </Typography>
+        <Typography sx={{ mb: 1.5 }} color="text.secondary">
+          adjective
+        </Typography>
+        <Typography variant="body2">
+          well meaning and kindly.
+          <br />
+          {'"a benevolent smile"'}
+        </Typography>
+      </CardContent>
+      <CardActions>
+        <FormControlLabel control={<Checkbox defaultChecked />} label="Label" />
+      </CardActions>
     </Card>
   );
 }

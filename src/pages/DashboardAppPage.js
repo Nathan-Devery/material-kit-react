@@ -7,7 +7,8 @@ import {
   Stack,
   RadioGroup,
   FormControlLabel,
-  Button
+  Button,
+  Checkbox
 } from '@mui/material';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
@@ -28,9 +29,9 @@ import {
 } from '../sections/@dashboard/app';
 
 export const FILTER_PRICE_OPTIONS = [
-  { value: 'below', label: 'Below $25' },
-  { value: 'between', label: 'Between $25 - $75' },
-  { value: 'above', label: 'Above $75' },
+  { value: 'below', label: 'Include Priority' },
+  { value: 'above', label: 'Effort' },
+  { value: 'above', label: 'Business Value' },
 ];
 
 // ----------------------------------------------------------------------
@@ -71,7 +72,7 @@ export default function DashboardAppPage() {
                 </Typography>
                 <RadioGroup>
                   {FILTER_PRICE_OPTIONS.map((item) => (
-                    <FormControlLabel key={item.value} value={item.value} control={<Radio />} label={item.label} />
+                    <FormControlLabel key={item} control={<Checkbox />} label={item.label} />
                   ))}
                 </RadioGroup>
               </div>
@@ -94,6 +95,8 @@ export default function DashboardAppPage() {
               </div>
             </Stack>
           </Grid>
+
+   
 
           <Grid item xs={12} sm={6} md={3}>
             <AppWidgetSummary title="Weekly Sales" total={714000} icon={'ant-design:android-filled'} />
