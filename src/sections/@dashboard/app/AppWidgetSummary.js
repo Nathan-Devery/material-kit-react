@@ -1,11 +1,12 @@
 // @mui
 import PropTypes from 'prop-types';
 import { alpha, styled } from '@mui/material/styles';
-import { Card, Typography, CardActions, CardContent, Button, FormGroup, FormControlLabel, Checkbox  } from '@mui/material';
+import { Card, Typography, CardActions, CardContent, Button, FormGroup, FormControlLabel, Checkbox, CardActionArea } from '@mui/material';
 // utils
 import { fShortenNumber } from '../../../utils/formatNumber';
 // components
 import Iconify from '../../../components/iconify';
+import "@fontsource/kalam";
 
 // ----------------------------------------------------------------------
 
@@ -31,18 +32,42 @@ AppWidgetSummary.propTypes = {
 };
 
 export default function AppWidgetSummary({ title, total, icon, color = 'primary', sx, ...other }) {
+  const rotateDegree = Math.floor(Math.random() * 3) - 1; // generates a random number between -1 and 1
+  const rotateDirection = Math.random() < 0.5 ? '-' : ''; // generates a random direction
+  
   return (
-    <Card
+    <CardActionArea
       sx={{
-        py: 5,
-        boxShadow: 0,
-        // textAlign: 'center',
-        color: (theme) => theme.palette[color].darker,
-        bgcolor: (theme) => theme.palette[color].lighter,
+        transform: `rotate(${rotateDirection}${rotateDegree}deg)`, // sets the random degree and direction
         ...sx,
       }}
-      {...other}
     >
+    <Card
+      
+      // sx={{
+      //   py: 5,
+      //   boxShadow: 0, 
+      //   // textAlign: 'center',
+      //   color: (theme) => theme.palette[color].darker,
+      //   bgcolor: (theme) => theme.palette[color].lighter,
+      //   ...sx,
+      // }}
+      // {...other}
+      variant="outlined"
+      sx={{
+        py: 5,
+        color: (theme) => theme.palette[color].darker,
+        bgcolor: (theme) => theme.palette[color].lighter,
+        padding: '20px',
+        // width: '300px',
+        // height: '300px',
+        boxShadow: '2px 2px 4px #000000',
+
+        borderRadius: 0,
+        ...sx,
+      }}
+    >
+
       {/* <StyledIcon
         sx={{
           color: (theme) => theme.palette[color].dark,
@@ -62,16 +87,16 @@ export default function AppWidgetSummary({ title, total, icon, color = 'primary'
         {title}
       </Typography> */}
       <CardContent>
-        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+        {/* <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
         {title} 
-        </Typography>
-        <Typography variant="h5" component="div">
+        </Typography> */}
+        <Typography variant="h5" fontFamily="Kalam" component="div">
           As a logged-in user,
         </Typography>
-        <Typography variant="h5" component="div">
+        <Typography variant="h5" fontFamily="Kalam" component="div">
           I want to be able to report unsuitable content,
         </Typography>
-        <Typography variant="h5" component="div">
+        <Typography variant="h5" fontFamily="Kalam" component="div">
           So that the website admin can review and/or remove the content
         </Typography>
         <Typography sx={{ mb: 1.5 }} color="text.secondary">
@@ -87,5 +112,6 @@ export default function AppWidgetSummary({ title, total, icon, color = 'primary'
         <FormControlLabel control={<Checkbox defaultChecked />} label="Label" />
       </CardActions>
     </Card>
+    </CardActionArea>
   );
 }
