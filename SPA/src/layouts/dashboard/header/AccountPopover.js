@@ -7,6 +7,8 @@ import account from '../../../_mock/account';
 
 // ----------------------------------------------------------------------
 
+import { useMsal } from '@azure/msal-react';
+
 const MENU_OPTIONS = [
   {
     label: 'Home',
@@ -26,6 +28,7 @@ const MENU_OPTIONS = [
 
 export default function AccountPopover() {
   const [open, setOpen] = useState(null);
+  const { instance } = useMsal();
 
   const handleOpen = (event) => {
     setOpen(event.currentTarget);
@@ -33,6 +36,15 @@ export default function AccountPopover() {
 
   const handleClose = () => {
     setOpen(null);
+  };
+
+  const handleLogoutRedirect = () => {
+    instance.logoutRedirect();
+  };
+
+  const handleLogout = () => {
+    handleClose();
+    handleLogoutRedirect();
   };
 
   return (
@@ -97,7 +109,7 @@ export default function AccountPopover() {
 
         <Divider sx={{ borderStyle: 'dashed' }} />
 
-        <MenuItem onClick={handleClose} sx={{ m: 1 }}>
+        <MenuItem onClick={handleLogout} sx={{ m: 1 }}>
           Logout
         </MenuItem>
       </Popover>
